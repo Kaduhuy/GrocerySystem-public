@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sign up</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+
+        <h1>Sign up</h1>
+
+        <form class="FormPage" th:action="@{/signup}" method="post" th:object="${userForm}">
+            <table>
+                <tr>
+                    <td><label for="name">Name:* </label></td>
+                    <td><input type="text" th:field="*{name}" placeholder="Name" id="name" required /></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="email" th:field="*{email}" placeholder="Email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password</label></td>
+                    <td><input type="password" th:field="*{password}" placeholder="Password" id="password" required></td>
+                </tr>
+                <tr>
+                    <td><label for="confirmPassword">Confirm Password</label></td>
+                    <td><input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat Password" required></td>
+                </tr>
+                <tr>
+                    <td><button id= "submit" type="submit">Sign Up</button></td>
+                </tr>
+            </table>
+            <p>Already have an account? <a th:href="@{/login}">Log in</a> </p><br>
+            <p th:if="${signupError}" th:text="${signupError}" style="color:red;"></p>
+        </form>
+
+    <script>
+        document.querySelector(".FormPage").addEventListener("submit", function (e) {
+            const pwd = document.getElementById("password").value;
+            const confirm = document.getElementById("confirmPassword").value;
+            if (pwd !== confirm) {
+                alert("Passwords do not match!");
+                e.preventDefault();
+            }
+        });
+    </script>
+    </body>
+</html>

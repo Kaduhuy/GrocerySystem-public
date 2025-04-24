@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hjem</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+        <h1>Grocery List</h1>
+        <!--Search bar-->
+        <div class="search-section">
+            <form th:action="@{/home}" method="get">
+                <input type="text" name="keyword" placeholder="Search groceries..." th:value="${keyword}" />
+                <div class="button-group">
+                    <button type="submit" class="search-button">Search</button>
+                    <a th:href="@{/home}" class="clear-button">Clear Search</a>
+                </div>
+            </form>
+            <br>
+            <form th:action="@{/home}" method="get">
+                <select name="category" onchange="this.form.submit()">
+                    <option value="">All categories</option>
+                    <option th:each="cat : ${categories}"
+                            th:value="${cat.name}"
+                            th:text="${cat.name}"
+                            th:selected="${cat.name == selectedCategory?.name}">
+                    </option>
+                </select>
+            </form>
+            <br>
+            <form method="get" th:action="@{/home}">
+                <select name="sort" onchange="this.form.submit()">
+                    <option value="">Sort by name</option>
+                    <option value="asc" th:selected="${selectedSort == 'asc'}">A → Z</option>
+                    <option value="desc" th:selected="${selectedSort == 'desc'}">Z → A</option>
+                </select>
+            </form>
+        </div>
+        <!--Grocery list-->
+        <div class="content">
+            <div class="container" th:each="item : ${groceries}">
+                <div class="grocery">
+                    <div class="grocery-image">
+                        <img th:src="${item.imageUrl}" th:alt="${item.name}" width="60" />
+                    </div>
+                    <p th:text="${item.name}"></p>
+                    <div>
+                        <span>Price: </span>
+                        <span th:text="${item.price}"></span>
+                        <span> kr </span>
+                    </div>
+                    <div>
+                        <span>Quantity: </span>
+                        <span th:text="${item.quantity}"></span>
+                        <span> stk </span>
+                    </div>
+                    <p th:text="${item.category.name}"></p>
+                    <a th:href="@{|/groceries/${item.id}/edit|}" class="edit-button">Edit</a>
+                    <form th:action="@{'/groceries/' + ${item.id}}" method="post">
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

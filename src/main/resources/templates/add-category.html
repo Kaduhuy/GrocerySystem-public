@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Category</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <h1>Add Category</h1>
+    <div class="section">
+
+    </div>
+    <form class="FormPage" th:action="@{/categories/add}" method="post" th:object="${category}">
+        <table>
+            <tr>
+                <td>
+                    <label for="name">Category Name:* </label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{name}" id="name" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="description">Description: </label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{description}" id="description">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Add Category</button>
+                </td>
+            </tr>
+        </table>
+        <div th:if="${errorMessage}" class="alert">
+            <p th:text="${errorMessage}"></p>
+        </div>
+    </form>
+
+    <form class="FormPage" method="get" th:action="@{/categories/add}">
+        <select name="sort" onchange="this.form.submit()">
+            <option value="">Sort by name</option>
+            <option value="asc" th:selected="${selectedSort == 'asc'}">A → Z</option>
+            <option value="desc" th:selected="${selectedSort == 'desc'}">Z → A</option>
+        </select>
+    </form>
+
+    <div class="content">
+        <div class="container" th:each="item : ${categories}">
+            <div class="category">
+                <p th:text="${item.name}"></p>
+                <span th:text="${item.description}"></span>
+                <div>
+                    <a th:href="@{|/categories/${item.id}/edit|}" class="edit-button">Edit</a>
+                    <form th:action="@{'/categories/' + ${item.id}}" method="post">
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
