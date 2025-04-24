@@ -5,7 +5,10 @@ import com.example.grocery_system.model.GroceryItem;
 import com.example.grocery_system.repository.CategoryRepository;
 import com.example.grocery_system.repository.GroceryRepository;
 import com.example.grocery_system.util.PixabayImageSearch;
+<<<<<<< HEAD
 import org.springframework.data.domain.Sort;
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -18,9 +21,13 @@ public class GroceryService {
     private final Random random = new Random();
     private Map<String, Object[]> possibleGroceries;
 
+<<<<<<< HEAD
     GroceryService(PixabayImageSearch pixabayImageSearch,
                    GroceryRepository groceryRepository,
                    CategoryRepository categoryRepository) {
+=======
+    GroceryService(PixabayImageSearch pixabayImageSearch, GroceryRepository groceryRepository, CategoryRepository categoryRepository) {
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
         this.pixabayImageSearch = pixabayImageSearch;
         this.groceryRepository = groceryRepository;
         this.categoryRepository = categoryRepository;
@@ -110,12 +117,17 @@ public class GroceryService {
         try {
             return pixabayImageSearch.getPixabayImageUrl(groceryName);
         } catch (Exception e) {
+<<<<<<< HEAD
             System.err.println("Failed to get Pixabay Image for "
                     + groceryName + ": " + Arrays.toString(e.getStackTrace()));
+=======
+            System.err.println("Failed to get Pixabay Image for " + groceryName + ": " + Arrays.toString(e.getStackTrace()));
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
             return null;
         }
     }
 
+<<<<<<< HEAD
     public List<GroceryItem> getGroceriesSortedByNameAsc() {
         for(GroceryItem item : groceryRepository.findAll()){
             setDefaultImageUrl(item);
@@ -133,22 +145,33 @@ public class GroceryService {
     public List<GroceryItem> getAllGroceryItems() {
         for(GroceryItem item : groceryRepository.findAll()){
             setDefaultImageUrl(item);
+=======
+    public List<GroceryItem> getAllGroceryItems() {
+        for(GroceryItem item : groceryRepository.findAll()){
+            if (item.getImageUrl() == null || item.getImageUrl().isBlank()) {
+                item.setImageUrl(generateImageUrl(item.getName()));
+            }
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
         }
         return groceryRepository.findAll();
     }
 
+<<<<<<< HEAD
     public void setDefaultImageUrl(GroceryItem item){
         if (item.getImageUrl() == null || item.getImageUrl().isBlank()) {
             item.setImageUrl(generateImageUrl(item.getName()));
         }
     }
 
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     public GroceryItem getGroceryItemById(String id) {
         return groceryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Grocery item not found with ID: " + id));
     }
 
     public GroceryItem addGroceryItem(GroceryItem item) {
+<<<<<<< HEAD
         if(checksIfGroceryNameExists(item)){
             throw new RuntimeException("This grocery already exists: " + item.getName());
         }
@@ -175,6 +198,20 @@ public class GroceryService {
             }
             updatedItem.setId(id);
             setDefaultImageUrl(updatedItem);
+=======
+        if (item.getImageUrl() == null || item.getImageUrl().isBlank()) {
+            item.setImageUrl(generateImageUrl(item.getName()));
+        }
+        return groceryRepository.save(item);
+    }
+
+    public GroceryItem updateGroceryItem(Long id, GroceryItem updatedItem) {
+        if (groceryRepository.existsById(id.toString())) {
+            updatedItem.setId(id);
+            if (updatedItem.getImageUrl() == null || updatedItem.getImageUrl().isBlank()) {
+                updatedItem.setImageUrl(generateImageUrl(updatedItem.getName()));
+            }
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
             return groceryRepository.save(updatedItem);
         }
         return null;
@@ -191,8 +228,11 @@ public class GroceryService {
     public List<GroceryItem> searchGroceries(String keyword) {
         return groceryRepository.findByNameContainingIgnoreCase(keyword);
     }
+<<<<<<< HEAD
 
     public List<GroceryItem> filterGroceriesByCategory(Category category){
         return groceryRepository.findByCategory(category);
     }
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
 }

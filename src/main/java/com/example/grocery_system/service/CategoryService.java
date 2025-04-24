@@ -2,7 +2,10 @@ package com.example.grocery_system.service;
 
 import com.example.grocery_system.model.Category;
 import com.example.grocery_system.repository.CategoryRepository;
+<<<<<<< HEAD
 import org.springframework.data.domain.Sort;
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,14 +19,18 @@ public class CategoryService {
     }
 
     public Category addCategory(Category category){
+<<<<<<< HEAD
         if(checksIfCategoryNameExists(category)){
             throw new RuntimeException("This category already exists: " + category.getName());
         }
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
         String upperCaseName = category.getName().toUpperCase();
         category.setName(upperCaseName);
         return categoryRepository.save(category);
     }
 
+<<<<<<< HEAD
     public boolean checksIfCategoryNameExists(Category category){
         for(Category cat : categoryRepository.findAll()){
             if(category.getName().equalsIgnoreCase(cat.getName())){
@@ -38,6 +45,8 @@ public class CategoryService {
                 .orElseThrow(() -> new RuntimeException("Category was not found with name: " + name));
     }
 
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     public Category getCategoryById(Long id){
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category was not found with ID: " + id));
@@ -45,9 +54,12 @@ public class CategoryService {
 
     public Category updateCategory(Long id, Category updatedCategory){
         if(categoryRepository.existsById(id)){
+<<<<<<< HEAD
             if(checksIfCategoryNameExists(updatedCategory)){
                 throw new RuntimeException("This category already exists: " + updatedCategory.getName());
             }
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
             updatedCategory.setId(id);
             String upperCaseName = updatedCategory.getName().toUpperCase();
             updatedCategory.setName(upperCaseName);
@@ -67,6 +79,7 @@ public class CategoryService {
     public List<Category> getAllCategories(){
         return categoryRepository.findAll();
     }
+<<<<<<< HEAD
 
     public List<Category> getCategoriesSortedByAsc(){
         return categoryRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
@@ -75,4 +88,6 @@ public class CategoryService {
     public List<Category> getCategoriesSortedByDesc(){
         return categoryRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
     }
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
 }

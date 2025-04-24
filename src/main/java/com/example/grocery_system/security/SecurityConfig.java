@@ -38,6 +38,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
+<<<<<<< HEAD
+=======
+                .csrf(AbstractHttpConfigurer::disable)
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
                 .formLogin(httpForm -> httpForm
                         .loginPage("/login").permitAll()
                         .usernameParameter("email")

@@ -12,6 +12,7 @@
     <form class="FormPage" th:action="@{/login}" method="post">
         <table>
             <tr>
+<<<<<<< HEAD
                 <td><label>Email:</label></td>
                 <td><input type="text" name="email" placeholder="Enter your email" required /></td>
 
@@ -19,15 +20,37 @@
             <tr>
                 <td><label>Password:</label></td>
                 <td><input type="password" name="password" placeholder="Enter your password" required /></td>
+=======
+                <td>
+                    <label>Email:</label>
+                    <input type="text" name="email" placeholder="Enter your email" required />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Password:</label>
+                    <input type="password" name="password" placeholder="Enter your password" required />
+                </td>
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
             </tr>
             <tr>
                 <td>
                     <button type="submit">Login</button>
                 </td>
             </tr>
+<<<<<<< HEAD
         </table>
 
         <p>Don't have an account? <a th:href="@{/signup}">Sign up here</a></p><br>
+=======
+            <tr>
+                <td>
+                    Don't have an account? <a th:href="@{/signup}">Sign up here</a>
+                </td>
+            </tr>
+        </table>
+
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
         <p th:if="${param.error}" style="color:red;">Invalid email or password</p>
         <p th:if="${param.logout}" style="color:green;">You have been logged out.</p>
     </form>

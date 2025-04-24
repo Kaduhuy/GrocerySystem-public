@@ -63,11 +63,14 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+<<<<<<< HEAD
 			<artifactId>spring-boot-starter-integration</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 

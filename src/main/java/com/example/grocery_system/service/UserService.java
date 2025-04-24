@@ -26,7 +26,11 @@ public class UserService implements UserDetailsService {
 
     public void registerUser(String name, String email, String rawPassword) {
         if (userRepository.findByEmail(email).isPresent()) {
+<<<<<<< HEAD
             throw new RuntimeException("User email already exists: " + email);
+=======
+            throw new RuntimeException("User already exists");
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
         }
 
         Users user = new Users();

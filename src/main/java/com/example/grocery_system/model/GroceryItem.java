@@ -11,8 +11,11 @@ public class GroceryItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+<<<<<<< HEAD
 
     @Column(unique = true, nullable = false)
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     private String name;
     private double price;
     private int quantity;

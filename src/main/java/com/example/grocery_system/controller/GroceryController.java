@@ -12,8 +12,12 @@ public class GroceryController {
     private final GroceryService groceryService;
     private final CategoryRepository categoryRepository;
 
+<<<<<<< HEAD
     public GroceryController(GroceryService groceryService,
                              CategoryRepository categoryRepository){
+=======
+    public GroceryController(GroceryService groceryService, CategoryRepository categoryRepository){
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
         this.groceryService = groceryService;
         this.categoryRepository = categoryRepository;
     }
@@ -26,6 +30,7 @@ public class GroceryController {
     }
 
     @PostMapping("/groceries/add")
+<<<<<<< HEAD
     public String addGrocery(@ModelAttribute GroceryItem groceryItem,
                              Model model) {
         try{
@@ -36,6 +41,11 @@ public class GroceryController {
             model.addAttribute("groceryItem", groceryItem);
             return "add-grocery";
         }
+=======
+    public String addGrocery(@ModelAttribute GroceryItem groceryItem) {
+        groceryService.addGroceryItem(groceryItem);
+        return "redirect:/home";
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     }
 
     @GetMapping("/groceries/{id}/edit")
@@ -47,6 +57,7 @@ public class GroceryController {
     }
 
     @PostMapping("/groceries/{id}/edit")
+<<<<<<< HEAD
     public String updateGrocery(@PathVariable Long id,
                                 @ModelAttribute GroceryItem groceryItem,
                                 Model model) {
@@ -60,6 +71,11 @@ public class GroceryController {
             model.addAttribute("categories", categoryRepository.findAll());
             return "edit-grocery";
         }
+=======
+    public String updateGrocery(@PathVariable Long id, @ModelAttribute GroceryItem groceryItem) {
+        groceryService.updateGroceryItem(id, groceryItem);
+        return "redirect:/home";
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     }
 
     @DeleteMapping("/groceries/{id}")

@@ -8,9 +8,13 @@
 <body>
     <div th:replace="~{fragments/navbar :: navbar}"></div>
     <h1>Add Category</h1>
+<<<<<<< HEAD
     <div class="section">
 
     </div>
+=======
+
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     <form class="FormPage" th:action="@{/categories/add}" method="post" th:object="${category}">
         <table>
             <tr>
@@ -35,6 +39,7 @@
                 </td>
             </tr>
         </table>
+<<<<<<< HEAD
         <div th:if="${errorMessage}" class="alert">
             <p th:text="${errorMessage}"></p>
         </div>
@@ -46,6 +51,8 @@
             <option value="asc" th:selected="${selectedSort == 'asc'}">A → Z</option>
             <option value="desc" th:selected="${selectedSort == 'desc'}">Z → A</option>
         </select>
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     </form>
 
     <div class="content">

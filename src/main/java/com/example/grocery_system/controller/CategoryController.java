@@ -6,8 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
 @Controller
 public class CategoryController {
     private final CategoryService categoryService;
@@ -17,6 +20,7 @@ public class CategoryController {
     }
 
     @GetMapping("/categories/add")
+<<<<<<< HEAD
     public String showAddCategoryForm(@RequestParam(value = "sort", required = false) String sort,
                                       Model model){
         List<Category> categories;
@@ -35,10 +39,16 @@ public class CategoryController {
         model.addAttribute("category", new Category());
         model.addAttribute("categories", categories);
         model.addAttribute("selectedSort", sort);
+=======
+    public String showAddCategoryForm(Model model){
+        model.addAttribute("category", new Category());
+        model.addAttribute("categories", categoryService.getAllCategories());
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
         return "add-category";
     }
 
     @PostMapping("/categories/add")
+<<<<<<< HEAD
     public String addCategory(@ModelAttribute Category category,
                               Model model){
         try{
@@ -50,6 +60,11 @@ public class CategoryController {
             model.addAttribute("categories", categoryService.getAllCategories());
             return "add-category";
         }
+=======
+    public String addCategory(@ModelAttribute Category category){
+        categoryService.addCategory(category);
+        return "redirect:/categories/add";
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     }
 
     @GetMapping("/categories/{id}/edit")
@@ -60,6 +75,7 @@ public class CategoryController {
     }
 
     @PostMapping("/categories/{id}/edit")
+<<<<<<< HEAD
     public String updateCategory(@PathVariable Long id,
                                  @ModelAttribute Category category,
                                  Model model){
@@ -72,6 +88,11 @@ public class CategoryController {
             model.addAttribute("category", cat);
             return "edit-category";
         }
+=======
+    public String updateCategory(@PathVariable Long id, @ModelAttribute Category category){
+        categoryService.updateCategory(id, category);
+        return "redirect:/categories/add";
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     }
 
     @DeleteMapping("/categories/{id}")

@@ -121,6 +121,7 @@ span {
     font-size: 14px;
 }
 
+<<<<<<< HEAD
 .FormPage table {
     width: 100%;
     border-collapse: separate;
@@ -159,6 +160,8 @@ form button:hover {
     background-color: #45a049;
 }
 
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
 /* Edit Button */
 .edit-button {
     background-color: #2196F3;
@@ -210,7 +213,11 @@ nav {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
+<<<<<<< HEAD
 nav a, nav form button {
+=======
+nav a {
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     text-decoration: none;
     color: #333;
     font-weight: bold;
@@ -223,11 +230,14 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
+<<<<<<< HEAD
 nav form button:hover {
     color: #4CAF50;
     transform: translateY(-2px);
 }
 
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
 .FormPage {
     max-width: 600px;
     margin: 30px auto;
@@ -237,6 +247,7 @@ nav form button:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+<<<<<<< HEAD
 .error-content{
     margin: auto;
     margin-top: 10%;
@@ -266,4 +277,42 @@ nav form button:hover {
 .logout-button:hover{
     background-color: darkred;
     color: black;
+=======
+.FormPage table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+.FormPage label {
+    font-weight: bold;
+    color: #333;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+form button:hover {
+    background-color: #45a049;
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
 }

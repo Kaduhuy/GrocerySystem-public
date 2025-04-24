@@ -2,12 +2,23 @@ package com.example.grocery_system.service;
 
 import com.example.grocery_system.model.Category;
 import com.example.grocery_system.model.GroceryItem;
+<<<<<<< HEAD
 import com.example.grocery_system.repository.GroceryRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
+=======
+import com.example.grocery_system.repository.CategoryRepository;
+import com.example.grocery_system.repository.GroceryRepository;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +33,12 @@ public class GroceryServiceTest {
     @Mock
     GroceryRepository groceryRepository;
 
+<<<<<<< HEAD
     @Captor
     ArgumentCaptor<String> imageCaptor;
 
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     @Spy
     @InjectMocks
     GroceryService groceryService;
@@ -84,12 +98,20 @@ public class GroceryServiceTest {
         //Assert
         assertNotNull(result);
         assertEquals(items, result);
+<<<<<<< HEAD
 
         //Verify
         verify(groceryService, times(2)).generateImageUrl(anyString());
         verify(groceryService, times(2)).generateImageUrl(imageCaptor.capture());
         List<String> values = imageCaptor.getAllValues();
         assertNotNull(values);
+=======
+        assertNotNull(result.getFirst().getImageUrl());
+        assertNotNull(result.getLast().getImageUrl());
+
+        //Verify
+        verify(groceryService, times(2)).generateImageUrl(anyString());
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     }
 
     @Test
@@ -133,7 +155,10 @@ public class GroceryServiceTest {
     @Test
     public void shouldAddGroceryItem(){
         //Arrange
+<<<<<<< HEAD
         //Arrange
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
         GroceryItem item = new GroceryItem(
                 1L,
                 "jam",
@@ -142,6 +167,7 @@ public class GroceryServiceTest {
                 new Category("PRODUCE", "grocery"),
                 "image-url"
         );
+<<<<<<< HEAD
         GroceryItem item1 = new GroceryItem(
                 1L,
                 "apple",
@@ -155,6 +181,9 @@ public class GroceryServiceTest {
         items.add(item1);
 
         doReturn(items).when(groceryRepository).findAll();
+=======
+
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
         doReturn(item).when(groceryRepository).save(item);
 
         //Act
@@ -165,6 +194,7 @@ public class GroceryServiceTest {
     }
 
     @Test
+<<<<<<< HEAD
     public void shouldNotAddGroceryItemWithSameName(){
         //Arrange
         GroceryItem item = new GroceryItem(
@@ -201,11 +231,17 @@ public class GroceryServiceTest {
     }
 
     @Test
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     public void shouldAddGroceryItemWithoutImageUrl(){
         //Arrange
         GroceryItem itemWithoutImage = new GroceryItem(
                 2L,
+<<<<<<< HEAD
                 "mango",
+=======
+                "cantalope",
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
                 30.0,
                 5,
                 new Category("FRUIT", "fruit")
@@ -218,12 +254,19 @@ public class GroceryServiceTest {
 
         //Assert
         assertNotNull(result);
+<<<<<<< HEAD
 
         //Verify
         verify(groceryService, times(1)).generateImageUrl(anyString());
         verify(groceryService, times(1)).generateImageUrl(imageCaptor.capture());
         String value = imageCaptor.getValue();
         assertNotNull(value);
+=======
+        assertNotNull(result.getImageUrl());
+
+        //Verify
+        verify(groceryService, times(1)).generateImageUrl(anyString());
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     }
 
     @Test
@@ -238,6 +281,7 @@ public class GroceryServiceTest {
                 "image-url"
         );
 
+<<<<<<< HEAD
         GroceryItem item = new GroceryItem(
                 1L,
                 "apple",
@@ -250,6 +294,8 @@ public class GroceryServiceTest {
         groceries.add(item);
 
         doReturn(groceries).when(groceryRepository).findAll();
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
         doReturn(true).when(groceryRepository).existsById(updateItem.getId().toString());
         doReturn(updateItem).when(groceryRepository).save(updateItem);
 
@@ -262,6 +308,7 @@ public class GroceryServiceTest {
     }
 
     @Test
+<<<<<<< HEAD
     public void shouldNotUpdateGroceryItemWithSameName(){
         //Arrange
         GroceryItem updateItem = new GroceryItem(
@@ -299,6 +346,8 @@ public class GroceryServiceTest {
     }
 
     @Test
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     public void shouldUpdateGroceryItemWithoutImageUrl(){
         //Arrange
         GroceryItem updateItemWithoutImage = new GroceryItem(
@@ -321,9 +370,12 @@ public class GroceryServiceTest {
 
         //Verify
         verify(groceryService, times(1)).generateImageUrl(anyString());
+<<<<<<< HEAD
         verify(groceryService, times(1)).generateImageUrl(imageCaptor.capture());
         String value = imageCaptor.getValue();
         assertNotNull(value);
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     }
 
     @Test
@@ -372,7 +424,10 @@ public class GroceryServiceTest {
 
     @Test
     public void shouldReturnGroceryListWhenGrocerySearch(){
+<<<<<<< HEAD
         //Arrange
+=======
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
         GroceryItem item = new GroceryItem(
                 1L,
                 "jam",
@@ -387,6 +442,7 @@ public class GroceryServiceTest {
 
         doReturn(list).when(groceryRepository).findByNameContainingIgnoreCase("JAM");
 
+<<<<<<< HEAD
         //Act
         List<GroceryItem> result = groceryService.searchGroceries("JAM");
 
@@ -577,4 +633,10 @@ public class GroceryServiceTest {
         assertEquals("PRODUCE",groceriesWithProduceCategory.get(0).getCategory().getName());
         assertEquals("PRODUCE", groceriesWithProduceCategory.get(1).getCategory().getName());
     }
+=======
+        List<GroceryItem> result = groceryService.searchGroceries("JAM");
+
+        assertEquals(list, result);
+    }
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
 }

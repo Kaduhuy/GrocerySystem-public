@@ -21,6 +21,7 @@
                 </tr>
                 <tr>
                     <td><label for="password">Password</label></td>
+<<<<<<< HEAD
                     <td><input type="password" th:field="*{password}" placeholder="Password" id="password" required></td>
                 </tr>
                 <tr>
@@ -45,5 +46,25 @@
             }
         });
     </script>
+=======
+                    <td><input type="password"  th:field="*{password}" placeholder="Password" id="password" name="password" required></td>
+                </tr>
+<!--                <tr>-->
+<!--                    <td><label for="passwordcon">Confirm Password</label></td>-->
+<!--                    <td><input type="password" id="passwordcon" name="passwordcon" required></td>-->
+<!--                </tr>-->
+                <tr>
+                    <td><button id= "submit" type="submit">Sign Up</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Already have an account? <a href="login.html">Log in</a> </p>
+                    </td>
+                </tr>
+            </table>
+            <p th:if="${signupError}" th:text="${signupError}" style="color:red;"></p>
+        </form>
+
+>>>>>>> aea768050c8b39c347dfeba62a25b6b8079d851e
     </body>
 </html>
